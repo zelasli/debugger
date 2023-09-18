@@ -2,24 +2,52 @@
 /**
  * Zelasli - PHP web framework
  *
- * @package Zelasli
- * @author Rufai Limantawa
  * @package Zelasli\Debugger
+ * @author Rufai Limantawa <rufailimantawa@gmail.com>
+ * @version 0.1
  */
 
 namespace Zelasli\Debugger;
 
+/**
+ * Debugger engine class
+ * 
+ */
 class Engine
 {
     /**
-     * Debug mode
+     * System Debug Mode
      * 
      * @var bool
      */
     protected $mode;
 
-    public function __construct(bool $mode = false) {
+    /**
+     * System Environment
+     * 
+     * @var string
+     */
+    protected $environment;
+
+    /**
+     * Debug Handler
+     * 
+     * @var Handler
+     */
+    protected $handler;
+
+    /*
+     * Debugger __construct()
+     * 
+     * @param bool $mode
+     * @param string $environment
+     * 
+     * @return $this
+     */
+    public function __construct(bool $mode = false, string $environment = 'production')
+    {
         $this->mode = $mode;
+        $this->environment = $environment;
     }
 
     /**
@@ -29,6 +57,35 @@ class Engine
      */
     public function initialize()
     {
-        error_reporting(-1);
+        if ($this->environment == 'production') {
+            ini_set('display_errors', '0');
+
+            error_reporting(
+                E_ALL & 
+                ~E_DEPRECATED & 
+                ~E_NOTICE & 
+                ~E_STRICT & 
+                ~E_USER_DEPRECATED & 
+                ~E_USER_NOTICE
+            );
+        } elseif ($this->environment == 'development') {
+            ini_set(
+                'display_errors',
+                $this->mode ? '1' : '0' 
+            );
+            error_reporting(-1);
+        }
+
+        $this->handler = new Handler($this);
+    }
+
+    /**
+     * Get debug mode
+     * 
+     * @return bool
+     */
+    public function getMode()
+    {
+        return $this->mode;
     }
 }
