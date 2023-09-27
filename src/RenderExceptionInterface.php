@@ -4,7 +4,7 @@
  *
  * @package Zelasli\Debugger
  * @author Rufai Limantawa <rufailimantawa@gmail.com>
- * @version 0.1
+ * @version 0.1.0
  */
 
 namespace Zelasli\Debugger;
@@ -15,5 +15,5 @@ namespace Zelasli\Debugger;
  */
 interface RenderExceptionInterface
 {
-    public function render();
+    public function render(): string;
 }

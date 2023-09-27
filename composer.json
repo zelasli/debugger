@@ -1,0 +1,17 @@
+{
+    "name": "zelasli/debugger",
+    "version": "0.1.0",
+    "description": "Zelasli Debugger module for handling errors and exception.",
+    "type": "library",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Rufai Limantawa",
+            "email": "rufailimantawa@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^7.4"
+    }
+}

@@ -4,7 +4,7 @@
  *
  * @package Zelasli\Debugger
  * @author Rufai Limantawa <rufailimantawa@gmail.com>
- * @version 0.1
+ * @version 0.1.0
  */
 
 namespace Zelasli\Debugger;
@@ -85,7 +85,7 @@ class Handler
      * @return void
      * @throws ErrorException
      */
-    public function handleError($number, $message, $file = null, $line = null, $context = null)
+    public function handleError($number, $message, $file = null, $line = null, $context = null): void
     {
         throw new ErrorException($message, 0, $number, $file, $line);
     }

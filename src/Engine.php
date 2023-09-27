@@ -4,7 +4,7 @@
  *
  * @package Zelasli\Debugger
  * @author Rufai Limantawa <rufailimantawa@gmail.com>
- * @version 0.1
+ * @version 0.1.0
  */
 
 namespace Zelasli\Debugger;
@@ -55,7 +55,7 @@ class Engine
      * 
      * @return void
      */
-    public function initialize()
+    public function initialize(): void
     {
         if ($this->environment == 'production') {
             ini_set('display_errors', '0');
@@ -84,7 +84,7 @@ class Engine
      * 
      * @return bool
      */
-    public function getMode()
+    public function getMode(): bool
     {
         return $this->mode;
     }
